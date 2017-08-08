@@ -1,55 +1,26 @@
-os:
-  - linux
-  - osx
+language: node_js
+node_js:
+  - "7"
+  - "6"
 matrix:
   include:
     - os: linux
       dist: trusty
       sudo: false
       env: TEST=test
-      language: node_js
-      node_js: "7"
-    - os: linux
-      dist: trusty
-      sudo: false
-      env: TEST=test
-      language: node_js
-      node_js: "6"
 
     - os: linux
       dist: trusty
       sudo: false
       env: TEST=e2e-test _FORCE_LOGS=1
-      language: node_js
-      node_js: "7"
-    - os: linux
-      dist: trusty
-      sudo: false
-      env: TEST=e2e-test _FORCE_LOGS=1
-      language: node_js
-      node_js: "6"
 
     - os: osx
       osx_image: xcode9
       env: TEST=test
-      language: node_js
-      node_js: "7"
-    - os: osx
-      osx_image: xcode9
-      env: TEST=test
-      language: node_js
-      node_js: "6"
 
     - os: osx
       osx_image: xcode9
       env: TEST=e2e-test _FORCE_LOGS=1
-      language: node_js
-      node_js: "7"
-    - os: osx
-      osx_image: xcode9
-      env: TEST=e2e-test _FORCE_LOGS=1
-      language: node_js
-      node_js: "6"
 env:
   global:
     - CXX=g++-4.8
