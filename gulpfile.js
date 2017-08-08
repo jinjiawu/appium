@@ -34,9 +34,6 @@ boilerplate({
   build: 'appium',
   jscs: false,
   jshint: false,
-  test: {
-    files: ['${testDir}/**/*-specs.js']
-  },
   extraPrepublishTasks: ['fixShrinkwrap'],
   preCommitTasks: ['eslint', 'once'],
 });

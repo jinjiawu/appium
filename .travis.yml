@@ -1,9 +1,30 @@
 language: node_js
-sudo: false
 node_js:
   - "7"
   - "6"
   - "4"
+os:
+  - linux
+  - osx
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: false
+      env: TEST=test
+
+    - os: linux
+      dist: trusty
+      sudo: false
+      env: TEST=e2e-test _FORCE_LOGS=1
+
+    - os: osx
+      osx_image: xcode9
+      env: TEST=test
+
+    - os: osx
+      osx_image: xcode9
+      env: TEST=e2e-test _FORCE_LOGS=1
 env:
   - CXX=g++-4.8
 addons:
@@ -13,7 +34,6 @@ addons:
     packages:
       - g++-4.8
 script:
-  - npm run lint
-  - npm run test
+  - npm run lint && npm run $TEST
 after_success:
-  - gulp coveralls
+  - npm run coveralls
