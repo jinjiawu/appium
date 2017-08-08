@@ -2,8 +2,10 @@ import path from 'path';
 import wd from 'wd';
 import B from 'bluebird';
 
+
 const TEST_HOST = 'localhost';
 const TEST_PORT = 4723;
+const MOCHA_TIMEOUT = 60 * 1000 * (process.env.TRAVIS ? 8 : 4);
 const TEST_FAKE_APP = path.resolve(__dirname, "..", "..", "node_modules",
                                    "appium-fake-driver", "test", "fixtures",
                                    "app.xml");
@@ -24,4 +26,4 @@ function initSession (caps) {
   });
 }
 
-export { initSession, TEST_FAKE_APP, TEST_HOST, TEST_PORT };
+export { initSession, TEST_FAKE_APP, TEST_HOST, TEST_PORT, MOCHA_TIMEOUT };
