@@ -88,9 +88,9 @@
     "eslint-plugin-mocha": "3.x",
     "eslint-plugin-promise": "3.x",
     "gulp": "3.x",
-    "ios-uicatalog": "^1.x",
     "mocha": "2.x",
     "pre-commit": "1.x",
+    "sample-apps": "^2.0.4",
     "sinon": "1.x",
     "wd": "1.x"
   },

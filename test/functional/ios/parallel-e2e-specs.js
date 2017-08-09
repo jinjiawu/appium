@@ -4,10 +4,9 @@ import chaiAsPromised from 'chai-as-promised';
 import wd from 'wd';
 import { main as appiumServer } from '../../../lib/main';
 import { TEST_HOST, TEST_PORT, MOCHA_TIMEOUT } from '../../helpers';
-import uiCatalogApp from 'ios-uicatalog';
-import path from 'path';
 import { system } from 'appium-support';
 import xcode from 'appium-xcode';
+import sampleApps from 'sample-apps';
 
 
 chai.use(chaiAsPromised);
@@ -19,7 +18,7 @@ const caps = {
   platformName: 'iOS',
   platformVersion: '10.3',
   deviceName: 'iPhone 6',
-  app: path.resolve('.', 'node_modules', 'ios-uicatalog', uiCatalogApp[1]),
+  app: sampleApps('UICatalog-iphonesimulator'),
 };
 
 describe('XCUITest - parallel', function () {
