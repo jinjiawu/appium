@@ -34,11 +34,11 @@ matrix:
 
     - os: osx
       osx_image: xcode9
-      env: TEST=e2e-test _FORCE_LOGS=1
+      env: TEST=e2e-test _FORCE_LOGS=1 PLATFORM_VERSION=11.0
       node_js: "7"
     - os: osx
       osx_image: xcode9
-      env: TEST=e2e-test _FORCE_LOGS=1
+      env: TEST=e2e-test _FORCE_LOGS=1 PLATFORM_VERSION=11.0
       node_js: "6"
 env:
   global:
@@ -52,7 +52,8 @@ addons:
 before_script:
   - node --version
   - npm install
-  - xcrun --sdk iphonesimulator --show-sdk-version
+  - if [ "$TRAVIS_OS_NAME" = "osx" ] && [ "$CC" = "gcc" ]; then export CC=gcc-4.8; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then xcrun --sdk iphonesimulator --show-sdk-version; fi
 script:
   - npm run lint && npm run $TEST
 after_success:
