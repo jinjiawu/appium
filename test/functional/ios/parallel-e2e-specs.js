@@ -26,11 +26,8 @@ describe('XCUITest - parallel', function () {
 
   let server;
   before(async function () {
-    if (!await system.isMac()) {
-      const xcodeVersion = await xcode.getVersion(true);
-      if (xcodeVersion.major < 9) {
-        return this.skip();
-      }
+    if (!await system.isMac() || (await xcode.getVersion(true)).major < 9) {
+      return this.skip();
     }
 
     if (shouldStartServer) {
