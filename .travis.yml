@@ -49,6 +49,10 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+before_script:
+  - node --version
+  - npm install
+  - xcrun --sdk iphonesimulator --show-sdk-version
 script:
   - npm run lint && npm run $TEST
 after_success:
